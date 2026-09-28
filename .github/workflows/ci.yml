@@ -23,4 +23,13 @@ jobs:
       - name: Run tests
         run: ./mvnw test
 
+      - name: Build application
+        run: ./mvnw package -DskipTests
+
+      - name: Upload JAR
+        uses: actions/upload-artifact@v4
+        with:
+          name: octocat-supply-api
+          path: target/*.jar
+          if-no-files-found: error
 
